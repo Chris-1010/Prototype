@@ -1,0 +1,294 @@
+* {
+    font-family: Lato, Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    user-select: none;
+}
+
+a#skiplink {
+    position: absolute;
+    background: beige;
+    border: 2px solid cyan;
+    padding: 15px;
+    top: 0;
+    left: 0;
+    width: fit-content;
+    pointer-events: none;
+    z-index: 0;
+    cursor: default;
+    opacity: 0%;
+}
+
+a#skiplink:focus {
+    opacity: 100%;
+    z-index: 3;
+    pointer-events: all;
+}
+
+body {
+    margin: 0px 3vw;
+    background: linear-gradient(0deg, beige, white 50%);
+    overflow: hidden;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 20vw repeat(3, 1fr);
+    grid-template-rows: 100px 30px 1fr;
+    background: white;
+    row-gap: 2vh;
+    width: 100%;
+    height: 100vh;
+    border-radius: 1rem;
+}
+
+header > a:first-of-type, header > a > img {
+    width: 100%;
+    max-width: 200px;
+    z-index: 1;
+}
+
+header a {
+    text-decoration: none;
+    cursor: pointer;
+    color: inherit;
+}
+
+header > a:nth-of-type(2):hover {
+    filter: drop-shadow(1px 1px .1rem red);
+}
+
+header a:active, header > nav > section:first-of-type:active, input[type="submit"]:active {
+    scale: 0.95;
+}
+
+header > #search {
+    grid-area: 1/2/2/4;
+    display: grid;
+    grid-template-columns: 1fr 50px;
+    width: fit-content;
+    max-width: 60%;
+    justify-self: start;
+    margin-left: 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+
+header > #search > input:first-of-type {
+    font-family: "Very Sans", "Poppins TVG", Arial, Helvetica, sans-serif !important;
+    width: 100%;
+    height: 50px;
+    text-align: start;
+    font-size: 1.1rem;
+    text-indent: 5%;
+    background: white;
+    border-radius: 5px;
+}
+
+header > #search > input:nth-of-type(2) {
+    background: url( https://www.littlewoods.com/static/images/header/svg/search.svg) center no-repeat;
+    color: transparent;
+    background-color: #7c2383;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+header > a:nth-of-type(2) {
+    grid-area: 1/3/2/5;
+    font-size: clamp(1rem, calc((4vh + 4vw)/2), 4rem);
+    color: red;
+    font-family: monospace;
+    transition: .25s;
+}
+
+header > img.options {
+    grid-area: 1/4;
+    width: 15%;
+    justify-self: end;
+    cursor: pointer;
+    transition: 1s linear;
+}
+
+header > section.options {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 5vh;
+    top: 100px;
+    right: calc(-8vw - 60px);
+    width: clamp(70px, 6vw, 100px);
+    padding: 20px 0;
+    background: #00000049;
+    border-radius: 1rem;
+    z-index: 3;
+    transition: 1s ease-in-out;
+}
+
+header > img.options.active + section.options {
+    right: 1.8vw;
+}
+
+header > section.options > a {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+header > section.options img {
+    width: 3vw;
+}
+
+header > img.options.active {
+    transform: rotate(90deg);
+}
+
+header > nav {
+    grid-area: 3/1/4/5;
+    display: grid;
+    grid-template-rows: 10vh 1fr;
+    grid-template-columns: 1fr;
+    width: 100%;
+}
+
+header > nav > section:first-of-type {
+    display: grid;
+    width: 60vh;
+    grid-template-columns: 10vh 40vh 10vh;
+    z-index: 2;
+}
+
+header > nav > section:first-of-type > button {
+    grid-area: 1/1/2/4;
+    width: 60vh;
+    height: 10vh;
+    font-size: 2rem;
+    color: white;
+    background: #7c2383;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+header > nav > section:first-of-type > img:first-of-type {
+    grid-column: 1;
+    justify-self: start;
+}
+
+header > nav > section:first-of-type > img:nth-of-type(2) {
+    grid-column: 3;
+    justify-self: end;
+}
+
+header > nav > section:first-of-type > img {
+    grid-area: 1/1;
+    width: 10vh;
+    transform: rotate(90deg);
+    transition: 1.5s;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    background: transparent;
+    cursor: pointer;
+}
+
+header > nav > section:first-of-type.active > img {
+    transform: rotate(270deg);
+}
+
+header > nav > section:first-of-type.active > img:nth-of-type(2) {
+    transform: rotate(-90deg);
+}
+
+header > nav > section:nth-of-type(2) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    row-gap: 5vh;
+    background: #7c2383;
+    width: 75%;
+    padding: 5vh 0;
+    font-size: 2rem;
+    border-radius: 5rem;
+    translate: 0 -100px;
+    opacity: 0%;
+    transition: 2s;
+}
+
+header > nav > section.active + section:nth-of-type(2) {
+    translate: 0;
+    opacity: 100%;
+}
+
+header > nav > section:nth-of-type(2) > a {
+    color: transparent;
+    background: transparent;
+    padding: 3vh;
+    border-radius: 1rem;
+    font-weight: 700;
+    transition-duration: 1s;
+    transition-property: color, background, visibility;
+    transition-delay: 0s;
+    cursor: default;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+header > nav:has(.active) > section:nth-of-type(2) > a {
+    visibility: visible;
+    color: red;
+    background: white;
+    transition-duration: 1s;
+    transition-property: color, background;
+    transition-delay: var(--i);
+    cursor: pointer;
+    pointer-events: all;
+}
+
+section#banner {
+    grid-area: 2/1/3/5;
+    display: flex;
+    flex-direction: row;
+    background: red;
+    color: white;
+    font-weight: 900;
+    height: 100%;
+}
+
+section#banner.accessibility {
+    grid-area: 2/1/4/5;
+    align-self: start;
+    height: auto;
+    flex-direction: column;
+    row-gap: 15px;
+    padding: 10px 15px;
+    border-radius: 1rem;
+}
+
+section#banner > div {
+    width: 70vw;
+    text-align: start;
+    animation: cycle 60s infinite linear forwards;
+}
+
+section#banner.accessibility > div {
+    text-align: center;
+    width: fit-content;
+    animation: none;
+}
+
+@keyframes cycle {
+    0% {
+        transform: translate(-140vw);
+    }
+    100% {
+        transform: translate(160vw);
+    }
+}
